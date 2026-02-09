@@ -91,17 +91,34 @@ section {
       filter: blur(80px) hue-rotate(0deg);
     }
   }
+
+  /* Flowing gradient: rotate conic-gradient angle (requires @property to animate) */
+  @keyframes gradientFlow {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 /* ── Hero Fluid Orb (primary blue) ── */
 [data-hero-orb] {
+  --gradient-angle: 0deg;
   position: absolute;
   width: 700px;
   height: 700px;
   top: 45%;
   left: 45%;
   background: conic-gradient(
-    from 0deg,
+    from var(--gradient-angle),
     rgba(0, 100, 255, 0.45),
     rgba(60, 60, 255, 0.3),
     rgba(120, 0, 255, 0.2),
@@ -111,19 +128,21 @@ section {
   filter: blur(80px);
   pointer-events: none;
   animation:
+    gradientFlow 20s linear infinite,
     fluidMorph 12s ease-in-out infinite,
     colorShift 8s ease-in-out infinite;
 }
 
 /* ── Hero Fluid Orb (accent red/warm) ── */
 [data-hero-orb-accent] {
+  --gradient-angle: 0deg;
   position: absolute;
   width: 350px;
   height: 350px;
   top: 25%;
   right: 15%;
   background: conic-gradient(
-    from 180deg,
+    from var(--gradient-angle),
     rgba(255, 60, 60, 0.3),
     rgba(255, 120, 50, 0.2),
     rgba(200, 50, 100, 0.25),
@@ -131,7 +150,9 @@ section {
   );
   filter: blur(60px);
   pointer-events: none;
-  animation: fluidMorphAlt 15s ease-in-out infinite;
+  animation:
+    gradientFlow 25s linear infinite reverse,
+    fluidMorphAlt 15s ease-in-out infinite;
 }
 
 /* ── Third subtle orb for depth ── */

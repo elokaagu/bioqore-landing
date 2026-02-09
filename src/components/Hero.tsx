@@ -9,32 +9,32 @@ export default function Hero() {
       {/* Content pinned to the bottom */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 sm:pb-24">
         {/* Overline */}
-        <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-white/50">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-white/50">
           AI Copilot
         </p>
 
         {/* Two-tone headline */}
-        <h1 className="max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-7xl lg:text-8xl xl:text-[6.5rem]">
+        <h1 className="max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
           Accelerate your
           <br />
           biomanufacturing R&D.
         </h1>
-        <p className="mt-4 max-w-5xl text-3xl font-light leading-[1.15] tracking-tight text-white/35 sm:text-5xl lg:text-6xl">
+        <p className="mt-3 max-w-5xl text-xl font-light leading-[1.15] tracking-tight text-white/35 sm:text-2xl lg:text-3xl">
           From fermentation to cell culture,
           <br className="hidden sm:block" />
           guided by AI.
         </p>
 
         {/* Dual CTA buttons */}
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-wrap gap-3">
           <a
             href="#voyager"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-[#0a0a0a] transition-all hover:bg-white/90 hover:shadow-lg"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] transition-all hover:bg-white/90 hover:shadow-lg"
           >
             Discover Voyager
             <svg
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -46,7 +46,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-base font-medium text-white transition-all hover:border-white/50 hover:bg-white/5"
+            className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2.5 text-sm font-medium text-white transition-all hover:border-white/50 hover:bg-white/5"
           >
             Get in touch
           </a>

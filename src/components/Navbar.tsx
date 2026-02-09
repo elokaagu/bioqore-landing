@@ -51,7 +51,7 @@ export default function Navbar() {
             />
           </svg>
           <span
-            className={`text-lg font-semibold tracking-tight transition-colors ${
+            className={`text-base font-semibold tracking-tight transition-colors ${
               scrolled ? "text-[#0a0a0a]" : "text-white"
             }`}
           >
@@ -65,7 +65,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className={`text-sm font-medium tracking-wide transition-colors ${
+              className={`text-xs font-medium tracking-wide transition-colors ${
                 scrolled
                   ? "text-gray-500 hover:text-black"
                   : "text-white/60 hover:text-white"
@@ -79,7 +79,7 @@ export default function Navbar() {
         {/* CTA */}
         <a
           href="#contact"
-          className={`hidden rounded-full px-5 py-2.5 text-sm font-medium transition-all md:block ${
+          className={`hidden rounded-full px-4 py-2 text-xs font-medium transition-all md:block ${
             scrolled
               ? "bg-[#0a0a0a] text-white hover:bg-black"
               : "border border-white/25 text-white hover:bg-white/10"
