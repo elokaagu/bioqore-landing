@@ -7,19 +7,19 @@ const cards = [
     title: "Upstream fermentation",
     tagline: "Real-time control",
     href: "#security",
-    image: "/product/upstream-fermentation.jpg",
+    image: "/biotech_1.jpg",
   },
   {
     title: "Cell culture",
     tagline: "Predict & optimize",
     href: "#product",
-    image: "/product/cell-culture.jpg",
+    image: "/biotech_2.jpg",
   },
   {
     title: "Scale-up",
     tagline: "Lab to production",
     href: "#get-started",
-    image: "/product/scale-up.jpg",
+    image: "/biotech_3.jpg",
   },
 ];
 

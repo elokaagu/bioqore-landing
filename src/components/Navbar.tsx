@@ -27,9 +27,7 @@ export default function Navbar() {
   const borderClass = isLight
     ? "border-gray-200/40"
     : "border-white/10";
-  const bgClass = isLight
-    ? "bg-transparent"
-    : "bg-black/30 backdrop-blur-md";
+  const bgClass = "bg-transparent";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b ${borderClass} ${bgClass} transition-colors duration-300`}>
@@ -42,9 +40,9 @@ export default function Navbar() {
           <Image
             src="/bioqore-logo.png"
             alt="Bioqore"
-            width={120}
-            height={32}
-            className="h-8 w-auto object-contain"
+            width={96}
+            height={26}
+            className={`h-6 w-auto object-contain ${isLight ? "" : "brightness-0 invert"}`}
             priority
           />
         </a>

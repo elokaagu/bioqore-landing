@@ -16,7 +16,7 @@ const productLinks = [
 
 const companyLinks = [
   { label: "About", href: "#mission" },
-  { label: "Careers", href: "#careers" },
+  { label: "Careers", href: "#contact" },
   { label: "Get in touch", href: "#contact" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -150,10 +150,12 @@ export default function Footer() {
                 <h4 className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-white/70">
                   Address
                 </h4>
-                <p className="max-w-[200px] text-sm leading-relaxed text-white/90">
+                <p className="max-w-[240px] text-sm leading-relaxed text-white/90">
                   Bioqore
                   <br />
-                  (Add your address)
+                  350 5th Avenue, Suite 3300
+                  <br />
+                  New York, NY 10118
                 </p>
               </div>
             </div>
@@ -222,9 +224,9 @@ export default function Footer() {
               <Image
                 src="/bioqore-logo.png"
                 alt="Bioqore"
-                width={120}
-                height={32}
-                className="h-8 w-auto object-contain"
+                width={96}
+                height={26}
+                className="h-6 w-auto object-contain brightness-0 invert"
               />
             </a>
             <span className="text-sm text-white/50">

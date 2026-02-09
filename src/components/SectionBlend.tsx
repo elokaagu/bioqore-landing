@@ -1,5 +1,5 @@
 export default function SectionBlend({
-  from,
+  from: _from,
   to,
   height = "clamp(80px, 12vw, 160px)",
 }: {
@@ -12,7 +12,7 @@ export default function SectionBlend({
       className="w-full shrink-0 pointer-events-none"
       style={{
         height,
-        background: `linear-gradient(to bottom, ${from}, ${to})`,
+        background: to,
       }}
       aria-hidden
     />

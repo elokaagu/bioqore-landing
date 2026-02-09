@@ -20,14 +20,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Dark gradient overlay for text readability */}
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] min-h-screen w-full"
-        style={{
-          background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.75) 100%)",
-        }}
-      />
-
       {/* Text and buttons overlay */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 sm:pb-24">
         <p className="mb-3 font-mono text-xs font-medium uppercase tracking-wide text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">

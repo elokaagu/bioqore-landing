@@ -1,3 +1,4 @@
+import BioreactorModel from "@/components/BioreactorModel";
 import DemoVideo from "@/components/DemoVideo";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import WordsReveal from "@/components/WordsReveal";
@@ -40,7 +41,17 @@ export default function VoyagerIntro() {
         </div>
         </RevealOnScroll>
 
+        {/* 3D Bioreactor */}
         <RevealOnScroll className="mt-20">
+          <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] shadow-2xl">
+            <BioreactorModel className="aspect-[16/9] w-full" />
+          </div>
+          <p className="mt-4 text-center text-xs text-gray-400">
+            Interactive 3D model &middot; Drag to rotate
+          </p>
+        </RevealOnScroll>
+
+        <RevealOnScroll className="mt-16">
           <DemoVideo />
         </RevealOnScroll>
       </div>

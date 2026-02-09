@@ -10,7 +10,6 @@ import Roadmap from "@/components/Roadmap";
 import Mission from "@/components/Mission";
 import FAQ from "@/components/FAQ";
 import GetStarted from "@/components/GetStarted";
-import CareersHero from "@/components/CareersHero";
 import Footer from "@/components/Footer";
 
 const COLORS = {
@@ -24,7 +23,6 @@ const COLORS = {
   mission: "#f5f5f5",
   faq: "#f2f2f2",
   getStarted: "#fafafa",
-  careers: "#0a0a0a",
   footer: "#000000",
 } as const;
 
@@ -50,9 +48,7 @@ export default function Home() {
       <FAQ />
       <SectionBlend from={COLORS.faq} to={COLORS.getStarted} />
       <GetStarted />
-      <SectionBlend from={COLORS.getStarted} to={COLORS.careers} />
-      <CareersHero />
-      <SectionBlend from={COLORS.careers} to={COLORS.footer} />
+      <SectionBlend from={COLORS.getStarted} to={COLORS.footer} />
       <Footer />
     </>
   );
