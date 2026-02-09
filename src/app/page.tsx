@@ -23,7 +23,6 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <SectionBlend from={COLORS.hero} to={COLORS.voyager} />
       <VoyagerIntro />
       <SectionBlend from={COLORS.voyager} to={COLORS.product} />
       <Product />
