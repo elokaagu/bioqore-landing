@@ -80,8 +80,8 @@ export default function TeamMemberModal({
         aria-label="Close"
       />
 
-      {/* Slide-in panel from left */}
-      <div className="team-member-panel relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden bg-white shadow-xl sm:max-w-lg">
+      {/* Sheet from left: fixed width so it reads as a drawer, not a full-screen modal */}
+      <div className="team-member-panel relative z-10 flex h-full w-full max-w-[min(24rem,90vw)] flex-col overflow-hidden bg-white shadow-2xl sm:max-w-lg">
 
         {/* Close button */}
         <button
@@ -116,11 +116,11 @@ export default function TeamMemberModal({
                   )}
                 </div>
                 <div className="min-w-0 flex-1 pt-1">
-                  <h3 className="text-xl font-bold tracking-tight text-[#1a1a1a]">
+                  <h3 className="text-xl font-bold tracking-tight text-[var(--color-main)]">
                     {member.name}
                   </h3>
                   {member.role && (
-                    <p className="mt-0.5 text-sm text-gray-500">{member.role}</p>
+                    <p className="mt-0.5 text-sm text-[var(--color-body)]">{member.role}</p>
                   )}
                   {member.linkedInUrl && (
                     <a
@@ -139,7 +139,7 @@ export default function TeamMemberModal({
               {/* Biography */}
               {member.biography && (
                 <div className="mt-8 border-t border-gray-200 pt-6">
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-700">
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--color-body)]">
                     {member.biography}
                   </p>
                 </div>

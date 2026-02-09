@@ -1,20 +1,25 @@
 import RevealOnScroll from "@/components/RevealOnScroll";
+import ProductCardImage from "@/components/ProductCardImage";
+import WordsReveal from "@/components/WordsReveal";
 
 const cards = [
   {
     title: "Upstream fermentation",
     tagline: "Real-time control",
     href: "#security",
+    image: "/product/upstream-fermentation.jpg",
   },
   {
     title: "Cell culture",
     tagline: "Predict & optimize",
     href: "#product",
+    image: "/product/cell-culture.jpg",
   },
   {
     title: "Scale-up",
     tagline: "Lab to production",
     href: "#get-started",
+    image: "/product/scale-up.jpg",
   },
 ];
 
@@ -30,12 +35,15 @@ export default function Product() {
               <p className="mb-4 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
                 Features
               </p>
-              <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-                Why Bioqore
-              </h2>
+              <WordsReveal
+                text="Why Bioqore"
+                as="h2"
+                className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+                stagger={0.05}
+              />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="max-w-xl text-lg leading-relaxed text-[var(--color-body)]">
                 Purpose-built for bioprocess R&D from day one.
               </p>
               <a
@@ -70,10 +78,14 @@ export default function Product() {
                 </p>
               </div>
               <div className="relative min-h-0 flex-1 bg-gray-900">
-                <div
-                  className="h-full w-full bg-gradient-to-b from-gray-900 to-black"
-                  aria-hidden
-                />
+                {card.image ? (
+                  <ProductCardImage src={card.image} alt={card.title} />
+                ) : (
+                  <div
+                    className="h-full w-full bg-gradient-to-b from-gray-900 to-black"
+                    aria-hidden
+                  />
+                )}
               </div>
               <div className="p-6 pt-4">
                 <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-red-accent)] transition-colors group-hover:underline">

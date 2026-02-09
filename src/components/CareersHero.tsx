@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import WordsReveal from "@/components/WordsReveal";
 
 const CAREERS_IMAGE = ""; // e.g. "/careers-hero.jpg" — leave empty for gradient
 
@@ -29,7 +30,7 @@ export default function CareersHero() {
           </>
         ) : (
           <div
-            className="h-full w-full bg-gradient-to-br from-[#0f1f14] via-[#1a2f1e] to-[#0f1f14]"
+            className="h-full w-full bg-gradient-to-br from-[#1e3a5f] via-[#2563eb] to-[#1e40af]"
             aria-hidden
           />
         )}
@@ -40,9 +41,14 @@ export default function CareersHero() {
         <span className="mb-6 inline-block font-mono rounded-full border-2 border-white/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white shadow-lg">
           Careers
         </span>
-        <h2 className="max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
-          Help build the future of biomanufacturing
-        </h2>
+        <WordsReveal
+          text="Help build the future of biomanufacturing"
+          as="h2"
+          className="max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl"
+          scrollTrigger={false}
+          delay={0.3}
+          stagger={0.05}
+        />
         <a
           href="#contact"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-black/50 px-6 py-3 text-sm font-semibold text-white shadow-lg backdrop-blur-sm transition-all hover:bg-black/60 hover:shadow-xl"

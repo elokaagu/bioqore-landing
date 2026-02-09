@@ -45,8 +45,8 @@ export default function TeamMemberCard({ name, role, image, onClick }: Props) {
           </div>
         )}
       </div>
-      <p className="mt-4 text-base font-semibold text-[#1a1a1a]">{name}</p>
-      {role && <p className="mt-0.5 text-sm text-gray-400">{role}</p>}
+      <p className="mt-4 text-base font-semibold text-[var(--color-main)]">{name}</p>
+      {role && <p className="mt-0.5 text-sm text-[var(--color-body)]">{role}</p>}
     </Wrapper>
   );
 }

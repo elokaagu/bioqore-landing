@@ -1,5 +1,6 @@
 import DemoVideo from "@/components/DemoVideo";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import WordsReveal from "@/components/WordsReveal";
 
 export default function VoyagerIntro() {
   return (
@@ -13,12 +14,15 @@ export default function VoyagerIntro() {
               <p className="mb-4 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
                 Platform
               </p>
-              <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-                Introducing Voyager
-              </h2>
+              <WordsReveal
+                text="Introducing Voyager"
+                as="h2"
+                className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+                stagger={0.05}
+              />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="max-w-xl text-lg leading-relaxed text-[var(--color-body)]">
                 Our AI-powered bioprocess platform that monitors, predicts, and
                 optimizes your runs in real time.
               </p>

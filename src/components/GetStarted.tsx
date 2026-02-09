@@ -1,4 +1,5 @@
 import RevealOnScroll from "@/components/RevealOnScroll";
+import WordsReveal from "@/components/WordsReveal";
 
 const cards = [
   {
@@ -83,11 +84,14 @@ export default function GetStarted() {
         {/* Two-column header: title left, body right */}
         <div className="border-t border-gray-300 pt-12">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1fr] lg:items-center">
-            <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-              Start working with Bioqore
-            </h2>
+            <WordsReveal
+              text="Start working with Bioqore"
+              as="h2"
+              className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+              stagger={0.04}
+            />
             <div className="flex flex-col justify-center">
-              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="max-w-xl text-lg leading-relaxed text-[var(--color-body)]">
                 Voyager is available as a platform you run in your own environment.
                 Get in touch for a demo, explore the docs, or ask about security and
                 partner integrations.
@@ -109,13 +113,13 @@ export default function GetStarted() {
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 text-[#1a1a1a]">
                 <CardIcon icon={card.icon} />
               </div>
-              <h3 className="mb-2 flex items-center gap-2 text-base font-bold text-[#1a1a1a]">
+              <h3 className="mb-2 flex items-center gap-2 text-base font-bold text-[var(--color-main)]">
                 {card.title}
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="opacity-70">
                   <path d="M7 17L17 7M17 7H7M17 7v10" />
                 </svg>
               </h3>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <p className="text-sm leading-relaxed text-[var(--color-body)]">
                 {card.description}
               </p>
             </a>

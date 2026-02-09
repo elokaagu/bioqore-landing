@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "PRODUCT", href: "#product" },
@@ -20,99 +21,62 @@ export default function Navbar() {
   }, []);
 
   const isLight = scrolled;
-  const textClass = isLight
-    ? "text-[#0a0a0a]"
-    : "text-white";
   const linkClass = isLight
-    ? "text-gray-500 hover:text-[#0a0a0a]"
-    : "text-white/70 hover:text-white";
+    ? "text-gray-600 hover:text-[#0a0a0a]"
+    : "text-white/80 hover:text-white";
   const borderClass = isLight
-    ? "border-gray-200/80"
+    ? "border-gray-200/40"
     : "border-white/10";
   const bgClass = isLight
-    ? "bg-white/90 shadow-lg"
-    : "bg-black/40";
+    ? "bg-transparent"
+    : "bg-black/30 backdrop-blur-md";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
-      {/* Dynamic Island pill */}
-      <div
-        className={`
-          group flex items-center rounded-full overflow-hidden
-          transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
-          border ${borderClass} ${bgClass} backdrop-blur-xl
-          w-fit max-w-[160px] hover:max-w-[660px] md:max-w-[160px] md:hover:max-w-[660px]
-        `}
-      >
-        {/* Logo + name (always visible) */}
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b ${borderClass} ${bgClass} transition-colors duration-300`}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
+        {/* Logo */}
         <a
           href="#"
-          className="flex shrink-0 items-center gap-2 py-2.5 pl-3 pr-3"
+          className="relative flex shrink-0 items-center"
         >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="14"
-              cy="14"
-              r="14"
-              fill={isLight ? "#0a0a0a" : "white"}
-            />
-            <circle
-              cx="10"
-              cy="14"
-              r="4"
-              fill={isLight ? "#f5f5f0" : "#0a0a0a"}
-            />
-          </svg>
-          <span className={`text-sm font-semibold tracking-tight ${textClass}`}>
-            bioqore
-          </span>
+          <Image
+            src="/bioqore-logo.png"
+            alt="Bioqore"
+            width={120}
+            height={32}
+            className="h-8 w-auto object-contain"
+            priority
+          />
         </a>
 
-        {/* Desktop: expand on hover — links + CTA */}
-        <div
-          className={`
-            hidden md:flex items-center flex-1 min-w-0
-            opacity-0 group-hover:opacity-100
-            transition-opacity duration-300 delay-75
-          `}
-        >
-          <div className={`flex items-center gap-6 pl-2 pr-4 py-2 border-l ml-1 ${isLight ? "border-gray-200" : "border-white/10"}`}>
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`font-mono text-xs font-medium tracking-tight whitespace-nowrap transition-colors ${linkClass}`}
-              >
-                {link.label}
-              </a>
-            ))}
+        {/* Desktop: links + CTA */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
             <a
-              href="#contact"
-              className={`
-                shrink-0 rounded-full px-4 py-2 text-xs font-medium whitespace-nowrap transition-all
-                ${isLight ? "bg-[#0a0a0a] text-white hover:bg-black" : "bg-white/15 text-white hover:bg-white/25"}
-              `}
+              key={link.label}
+              href={link.href}
+              className={`font-mono text-sm font-medium transition-colors ${linkClass}`}
             >
-              Start working with Bioqore
+              {link.label}
             </a>
-          </div>
+          ))}
+          <a
+            href="#contact"
+            className={`shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition-colors ${isLight ? "bg-[#0a0a0a] text-white hover:bg-black" : "bg-white/20 text-white hover:bg-white/30"}`}
+          >
+            Start working with Bioqore
+          </a>
         </div>
 
-        {/* Mobile: hamburger to expand */}
+        {/* Mobile: hamburger */}
         <button
-          className="md:hidden flex items-center justify-center w-10 h-10 shrink-0"
+          className="flex h-10 w-10 items-center justify-center md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <svg
-            width="20"
-            height="20"
+            width="24"
+            height="24"
             fill="none"
             stroke={isLight ? "currentColor" : "white"}
             strokeWidth="2"
@@ -126,20 +90,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile expanded menu (below island) */}
+      {/* Mobile menu */}
       {mobileOpen && (
-        <div
-          className={`
-            absolute top-full left-4 right-4 mt-2 rounded-2xl overflow-hidden
-            border ${borderClass} ${bgClass} backdrop-blur-xl
-            py-4 px-5 md:hidden
-          `}
-        >
+        <div className={`border-t px-6 py-4 md:hidden ${isLight ? "border-gray-200 bg-white" : "border-white/10 bg-black/95"}`}>
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className={`block py-2.5 font-mono text-sm font-medium ${linkClass}`}
+              className={`block py-3 font-mono text-sm font-medium ${isLight ? "text-gray-600 hover:text-[#0a0a0a]" : "text-white/90 hover:text-white"}`}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -147,7 +105,7 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            className="mt-3 inline-block rounded-full bg-white px-5 py-2.5 text-sm font-medium text-[#0a0a0a]"
+            className={`mt-3 inline-block rounded-lg px-4 py-2.5 text-sm font-medium ${isLight ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"}`}
             onClick={() => setMobileOpen(false)}
           >
             Start working with Bioqore

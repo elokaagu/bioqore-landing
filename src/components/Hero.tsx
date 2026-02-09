@@ -2,8 +2,9 @@
 
 import UnicornScene from "unicornstudio-react/next";
 import TypewriterHeadline from "@/components/TypewriterHeadline";
+import WordsReveal from "@/components/WordsReveal";
 
-const UNICORN_STUDIO_PROJECT = "9vO2KduX3BeT4ToEHNwn";
+const UNICORN_STUDIO_PROJECT = "P0se60zan30bsR7i3bBt";
 
 export default function Hero() {
   return (
@@ -35,11 +36,17 @@ export default function Hero() {
         <h1 className="max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] sm:text-5xl lg:text-6xl xl:text-7xl">
           <TypewriterHeadline text={"Accelerate your\nbiomanufacturing R&D."} speed={55} />
         </h1>
-        <p className="mt-3 max-w-5xl text-xl font-light leading-[1.15] tracking-tight text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] sm:text-2xl lg:text-3xl">
-          From fermentation to cell culture,
-          <br className="hidden sm:block" />
-          guided by AI.
-        </p>
+        <div className="mt-3 max-w-5xl text-xl font-light leading-[1.15] tracking-tight text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] sm:text-2xl lg:text-3xl">
+          <WordsReveal
+            text="From fermentation to cell culture, guided by AI."
+            as="p"
+            className=""
+            scrollTrigger={false}
+            delay={1.2}
+            stagger={0.04}
+            duration={0.5}
+          />
+        </div>
         <div className="mt-8 flex flex-wrap gap-3">
           <a
             href="#voyager"

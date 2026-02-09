@@ -1,4 +1,5 @@
 import RevealOnScroll from "@/components/RevealOnScroll";
+import WordsReveal from "@/components/WordsReveal";
 
 const securityItems = [
   {
@@ -35,12 +36,15 @@ export default function Security() {
               <p className="mb-4 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
                 Data Security
               </p>
-              <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-                Your data stays 100% in your hands.
-              </h2>
+              <WordsReveal
+                text="Your data stays 100% in your hands."
+                as="h2"
+                className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+                stagger={0.04}
+              />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="max-w-xl text-lg leading-relaxed text-[var(--color-body)]">
                 With Voyager, nothing leaves your infrastructure.
               </p>
               <a
@@ -60,12 +64,15 @@ export default function Security() {
         <RevealOnScroll stagger className="mt-16">
         <div className="grid gap-px overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {securityItems.map((item) => (
-            <div key={item.title} className="bg-white p-7">
+            <div
+              key={item.title}
+              className="bg-white p-7 transition-colors transition-shadow duration-200 hover:bg-gray-50 hover:shadow-md"
+            >
               <div className="mb-4 h-1.5 w-1.5 rounded-full bg-[var(--color-red-accent)]" />
-              <h3 className="mb-2 text-base font-bold text-[#1a1a1a]">
+              <h3 className="mb-2 text-base font-bold text-[var(--color-main)]">
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed text-gray-500">
+              <p className="text-sm leading-relaxed text-[var(--color-body)]">
                 {item.description}
               </p>
             </div>

@@ -3,7 +3,9 @@
 @theme inline {
   --color-background: #f5f5f0;
   --color-foreground: #0a0a0a;
-  --color-blue-accent: #007bff;
+  --color-main: #0a0a0a;
+  --color-body: #525252;
+  --color-blue-accent: #4285f4;
   --color-red-accent: #ef4444;
   --color-charcoal: #262626;
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
@@ -261,6 +263,14 @@ section {
     opacity: 1;
     transform: none;
   }
+  .how-it-works-diagram .diagram-node {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .how-it-works-diagram.revealed .diagram-loop {
+    animation: none;
+  }
 }
 
 /* ── Team member modal (slide-in panel) ── */
@@ -291,4 +301,46 @@ section {
 
 .careers-hero-content {
   animation: careersFadeIn 0.8s ease-out forwards;
+}
+
+/* ── How it works diagram (staggered reveal + loop pulse) ── */
+.how-it-works-diagram .diagram-node {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.how-it-works-diagram.revealed .diagram-node {
+  animation: diagramNodeIn 0.5s ease-out forwards;
+}
+
+.how-it-works-diagram.revealed .diagram-node-top { animation-delay: 0ms; }
+.how-it-works-diagram.revealed .diagram-node-center { animation-delay: 120ms; }
+.how-it-works-diagram.revealed .diagram-node-line-left,
+.how-it-works-diagram.revealed .diagram-node-line-right { animation-delay: 220ms; }
+.how-it-works-diagram.revealed .diagram-node-left,
+.how-it-works-diagram.revealed .diagram-node-right { animation-delay: 320ms; }
+
+@keyframes diagramNodeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.how-it-works-diagram.revealed .diagram-loop {
+  animation: diagramLoopPulse 2.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes diagramLoopPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(66, 133, 244, 0);
+  }
 }

@@ -1,31 +1,32 @@
 "use client";
 
 import RevealOnScroll from "@/components/RevealOnScroll";
-import BlurInImage from "@/components/BlurInImage";
+import RoadmapMilestoneImage from "@/components/RoadmapMilestoneImage";
+import WordsReveal from "@/components/WordsReveal";
 
 const milestones = [
   {
     year: "2023",
     label: "R&D foundation",
-    image: null as string | null,
+    image: "/roadmap/2023-r-d-foundation.jpg",
     alt: "Early R&D",
   },
   {
     year: "2024",
     label: "Voyager alpha",
-    image: null as string | null,
+    image: "/roadmap/2024-voyager-alpha.jpg",
     alt: "Voyager platform",
   },
   {
     year: "2025",
     label: "Pilot deployments",
-    image: null as string | null,
+    image: "/roadmap/2025-pilot-deployments.jpg",
     alt: "Pilot runs",
   },
   {
     year: "2026",
     label: "Scale & commercial",
-    image: null as string | null,
+    image: "/roadmap/2026-scale-commercial.jpg",
     alt: "Commercial scale",
   },
 ];
@@ -39,10 +40,13 @@ export default function Roadmap() {
             <p className="mb-2 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
               Timeline
             </p>
-            <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-              Technical Roadmap
-            </h2>
-            <p className="mt-3 text-lg text-gray-600">
+            <WordsReveal
+              text="Technical Roadmap"
+              as="h2"
+              className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+              stagger={0.05}
+            />
+            <p className="mt-3 text-lg text-[var(--color-body)]">
               Bioqore&apos;s innovation milestones
             </p>
           </div>
@@ -75,18 +79,12 @@ export default function Roadmap() {
               <div className="grid grid-cols-4 gap-6 md:gap-8 mt-6">
                 {milestones.map((m) => (
                   <div key={m.year} className="flex flex-col items-center min-w-0">
-                    <p className="mb-4 text-center text-sm font-semibold text-[#1a1a1a]">
+                    <p className="mb-4 text-center text-sm font-semibold text-[var(--color-main)]">
                       {m.label}
                     </p>
                     <div className="relative w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100 shadow-sm" style={{ aspectRatio: "4/3" }}>
                       {m.image ? (
-                        <BlurInImage
-                          src={m.image}
-                          alt={m.alt}
-                          fill
-                          sizes="(max-width: 768px) 120px, 180px"
-                          className="object-cover"
-                        />
+                        <RoadmapMilestoneImage src={m.image} alt={m.alt} />
                       ) : (
                         <div
                           className="h-full w-full bg-gradient-to-br from-gray-200 to-gray-300"

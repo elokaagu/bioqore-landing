@@ -1,12 +1,13 @@
 import MissionTeam from "@/components/MissionTeam";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import WordsReveal from "@/components/WordsReveal";
 import type { TeamMemberProfile } from "@/components/TeamMemberModal";
 
 const team: TeamMemberProfile[] = [
   {
     name: "Joshua Hinckley, PhD",
     role: "CEO",
-    image: "/team/joshua-hinckley.jpg",
+    image: "/Joshua%20Hinckley.jpeg",
     linkedInUrl: "https://www.linkedin.com/in/joshuahinckley",
     biography:
       "Joshua leads Bioqore's vision and strategy. With a background in fermentation, high-throughput biology, and AI, he founded Bioqore to turn biomanufacturing from guesswork into science.\n\nHis experience spans academic research and industry, with a focus on making bioprocess R&D faster and more predictable so life-changing therapies can reach patients sooner.",
@@ -14,7 +15,7 @@ const team: TeamMemberProfile[] = [
   {
     name: "Brendan Dang",
     role: "CSO",
-    image: "/team/brendan-dang.jpg",
+    image: "/Brendan%20Dang.jpeg",
     linkedInUrl: "https://www.linkedin.com/in/brendandang",
     biography:
       "Brendan drives scientific strategy and platform development at Bioqore. He brings deep expertise in cell culture, scale-up, and data-driven optimization.\n\nBefore Bioqore, he worked across biotech and pharma on process development and analytics. He is focused on building tools that let teams move from pilot to production with confidence.",
@@ -36,12 +37,15 @@ export default function Mission() {
               <p className="mb-4 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
                 About Us
               </p>
-              <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
-                We are on a mission
-              </h2>
+              <WordsReveal
+                text="We are on a mission"
+                as="h2"
+                className="text-4xl font-bold leading-[1.1] tracking-tighter text-[var(--color-main)] sm:text-5xl"
+                stagger={0.05}
+              />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+              <p className="max-w-xl text-lg leading-relaxed text-[var(--color-body)]">
                 {missionCopy}
               </p>
               <a
@@ -71,14 +75,14 @@ export default function Mission() {
 
               {/* Join card */}
               <div className="mt-8 border-t border-gray-200 pt-8">
-                <p className="max-w-md text-base leading-relaxed text-gray-500">
+                <p className="max-w-md text-base leading-relaxed text-[var(--color-body)]">
                   We&apos;re building the future, and we can&apos;t do it alone.
                   If you&apos;re a builder, a thinker, a doer, we&apos;d love to
                   hear from you.
                 </p>
                 <a
                   href="#contact"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#1a1a1a] underline-offset-4 hover:underline"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-main)] underline-offset-4 hover:underline"
                 >
                   Get in touch
                   <svg

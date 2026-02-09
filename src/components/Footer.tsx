@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const connectLinks = [
   { label: "LinkedIn", href: "https://linkedin.com", external: true },
   { label: "X", href: "https://x.com", external: true },
@@ -21,9 +23,9 @@ const companyLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#0f1f14] text-white">
+    <footer id="contact" className="bg-black text-white">
       {/* Top: "Follow our journey" form + Contact / Follow / Address */}
-      <div className="border-b border-white/10 bg-[#0a1810]">
+      <div className="border-b border-white/10 bg-black">
         <div className="mx-auto max-w-6xl px-6 py-12 lg:py-16">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left: form */}
@@ -73,16 +75,16 @@ export default function Footer() {
                     className="w-full appearance-none border-b border-white/30 bg-transparent pb-2 pr-8 text-sm text-white focus:border-white/60 focus:outline-none [color-scheme:dark]"
                     aria-label="Interest"
                   >
-                    <option value="" className="bg-[#0f1f14] text-white">
+                    <option value="" className="bg-black text-white">
                       Please indicate your interest
                     </option>
-                    <option value="demo" className="bg-[#0f1f14]">
+                    <option value="demo" className="bg-black">
                       Request a demo
                     </option>
-                    <option value="partner" className="bg-[#0f1f14]">
+                    <option value="partner" className="bg-black">
                       Partnership
                     </option>
-                    <option value="careers" className="bg-[#0f1f14]">
+                    <option value="careers" className="bg-black">
                       Careers
                     </option>
                   </select>
@@ -100,13 +102,13 @@ export default function Footer() {
                   <input
                     type="checkbox"
                     name="newsletter"
-                    className="h-4 w-4 rounded border-white/30 bg-transparent text-[#0f1f14] focus:ring-white/50"
+                    className="h-4 w-4 rounded border-white/30 bg-transparent text-black focus:ring-white/50"
                   />
                   Sign up for our newsletter
                 </label>
                 <button
                   type="submit"
-                  className="mt-4 w-fit rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-[#0f1f14] transition-colors hover:bg-white/90"
+                  className="mt-4 w-fit rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-white/90"
                 >
                   Submit
                 </button>
@@ -216,21 +218,14 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
-            <a href="#" className="flex items-center gap-2">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="shrink-0"
-              >
-                <circle cx="14" cy="14" r="14" fill="white" />
-                <circle cx="10" cy="14" r="4" fill="#0f1f14" />
-              </svg>
-              <span className="text-lg font-bold tracking-tight text-white">
-                bioqore
-              </span>
+            <a href="#" className="relative flex items-center">
+              <Image
+                src="/bioqore-logo.png"
+                alt="Bioqore"
+                width={120}
+                height={32}
+                className="h-8 w-auto object-contain"
+              />
             </a>
             <span className="text-sm text-white/50">
               © {new Date().getFullYear()} Bioqore. All rights reserved.

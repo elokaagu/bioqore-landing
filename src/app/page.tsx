@@ -24,8 +24,8 @@ const COLORS = {
   mission: "#f5f5f5",
   faq: "#f2f2f2",
   getStarted: "#fafafa",
-  careers: "#0f1f14",
-  footer: "#0f1f14",
+  careers: "#0a0a0a",
+  footer: "#000000",
 } as const;
 
 export default function Home() {

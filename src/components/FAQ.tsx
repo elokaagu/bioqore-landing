@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import WordsReveal from "@/components/WordsReveal";
 
 const faqs = [
   {
@@ -31,34 +32,38 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
+  const selected = faqs[openIndex];
 
   return (
     <section id="faq" className="bg-[#f2f2f2] py-24">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className="mx-auto max-w-5xl px-6">
         <RevealOnScroll>
         <div className="mb-12">
-          <p className="mb-2 font-mono text-sm font-medium uppercase tracking-tight text-[#333]">
+          <p className="mb-2 font-mono text-sm font-medium uppercase tracking-tight text-[var(--color-body)]">
             FAQ
           </p>
-          <h2 className="text-4xl font-light leading-tight tracking-tight text-[#333] sm:text-5xl">
-            Frequently Asked
-            <br />
-            Questions
-          </h2>
+          <WordsReveal
+            text="Frequently Asked Questions"
+            as="h2"
+            className="text-4xl font-light leading-tight tracking-tight text-[var(--color-main)] sm:text-5xl"
+            stagger={0.04}
+          />
         </div>
 
-        <div className="divide-y divide-gray-300">
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              className={`py-4 first:pt-0 ${
-                openIndex === i ? "rounded-lg border-2 border-[#007bff] bg-white px-4 -mx-4" : ""
-              }`}
-            >
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
+          {/* Question list */}
+          <div className="divide-y divide-gray-300">
+            {faqs.map((faq, i) => (
               <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 text-left text-lg font-medium text-[#333] transition-colors"
+                key={i}
+                onClick={() => setOpenIndex(i)}
+                className={`flex w-full items-center justify-between gap-4 py-4 text-left text-lg font-medium transition-colors first:pt-0 ${
+                  openIndex === i
+                    ? "text-[var(--color-blue-accent)]"
+                    : "text-[var(--color-body)] hover:text-[var(--color-main)]"
+                }`}
               >
                 <span>{faq.q}</span>
                 <svg
@@ -75,13 +80,18 @@ export default function FAQ() {
                   <path d="M6 9l6 6 6-6" />
                 </svg>
               </button>
-              {openIndex === i && (
-                <p className="mt-3 text-base leading-relaxed text-gray-600">
-                  {faq.a}
-                </p>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Answer panel */}
+          <div className="rounded-xl border-2 border-[var(--color-blue-accent)] bg-white p-6 shadow-sm lg:p-8">
+            <h3 className="mb-4 text-lg font-semibold text-[var(--color-main)]">
+              {selected?.q}
+            </h3>
+            <p className="text-base leading-relaxed text-[var(--color-body)]">
+              {selected?.a}
+            </p>
+          </div>
         </div>
         </RevealOnScroll>
       </div>
