@@ -41,17 +41,17 @@ export default function Navbar() {
           group flex items-center rounded-full overflow-hidden
           transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]
           border ${borderClass} ${bgClass} backdrop-blur-xl
-          w-fit max-w-[200px] hover:max-w-[580px] md:max-w-[200px] md:hover:max-w-[580px]
+          w-fit max-w-[160px] hover:max-w-[660px] md:max-w-[160px] md:hover:max-w-[660px]
         `}
       >
         {/* Logo + name (always visible) */}
         <a
           href="#"
-          className="flex shrink-0 items-center gap-2.5 py-2.5 pl-4 pr-3"
+          className="flex shrink-0 items-center gap-2 py-2.5 pl-3 pr-3"
         >
           <svg
-            width="24"
-            height="24"
+            width="22"
+            height="22"
             viewBox="0 0 28 28"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
