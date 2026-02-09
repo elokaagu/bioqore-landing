@@ -1,3 +1,5 @@
+import RevealOnScroll from "@/components/RevealOnScroll";
+
 const securityItems = [
   {
     title: "On your computers",
@@ -25,40 +27,38 @@ export default function Security() {
   return (
     <section id="security" className="bg-[#f2f2f2] py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header — asymmetric like Diamond Foundry */}
+        <RevealOnScroll>
+        {/* Two-column: label + headline left, body + CTA right */}
         <div className="border-t border-gray-300 pt-12">
-          <div className="grid gap-12 lg:grid-cols-[200px_1fr]">
-            <p className="text-sm font-medium uppercase tracking-widest text-gray-400">
-              Data Security
-            </p>
-
-            <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h2 className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-5xl">
-                  Your data stays 100% in your hands.
-                </h2>
-                <p className="mt-4 max-w-xl text-lg font-light text-gray-400">
-                  With Voyager, nothing leaves your infrastructure.
-                </p>
-              </div>
-              <svg
-                width="64"
-                height="64"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1"
-                className="mt-1 shrink-0 text-gray-300"
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1fr] lg:items-center">
+            <div>
+              <p className="mb-4 font-mono text-sm font-medium uppercase tracking-wide text-gray-500">
+                Data Security
+              </p>
+              <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter text-[#1a1a1a] sm:text-5xl">
+                Your data stays 100% in your hands.
+              </h2>
+            </div>
+            <div className="flex flex-col justify-center">
+              <p className="max-w-xl text-lg leading-relaxed text-gray-600">
+                With Voyager, nothing leaves your infrastructure.
+              </p>
+              <a
+                href="#mission"
+                className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg border-2 border-[var(--color-blue-accent)] bg-white px-5 py-2.5 text-sm font-medium text-[var(--color-blue-accent)] transition-colors hover:bg-[var(--color-blue-accent)]/5"
               >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
+                Learn more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
 
         {/* Security cards — 4-column grid */}
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealOnScroll stagger className="mt-16">
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {securityItems.map((item) => (
             <div key={item.title} className="bg-white p-7">
               <div className="mb-4 h-1.5 w-1.5 rounded-full bg-[var(--color-red-accent)]" />
@@ -71,6 +71,8 @@ export default function Security() {
             </div>
           ))}
         </div>
+        </RevealOnScroll>
+        </RevealOnScroll>
       </div>
     </section>
   );

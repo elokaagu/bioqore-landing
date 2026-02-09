@@ -87,7 +87,7 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-xs font-medium tracking-wide whitespace-nowrap transition-colors ${linkClass}`}
+                className={`font-mono text-xs font-medium tracking-tight whitespace-nowrap transition-colors ${linkClass}`}
               >
                 {link.label}
               </a>
@@ -139,7 +139,7 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className={`block py-2.5 text-sm font-medium ${linkClass}`}
+              className={`block py-2.5 font-mono text-sm font-medium ${linkClass}`}
               onClick={() => setMobileOpen(false)}
             >
               {link.label}

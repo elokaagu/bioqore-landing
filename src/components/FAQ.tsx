@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import RevealOnScroll from "@/components/RevealOnScroll";
 
 const faqs = [
   {
@@ -35,8 +36,9 @@ export default function FAQ() {
   return (
     <section id="faq" className="bg-[#f2f2f2] py-24">
       <div className="mx-auto max-w-3xl px-6">
+        <RevealOnScroll>
         <div className="mb-12">
-          <p className="mb-2 text-sm font-medium uppercase tracking-wide text-[#333]">
+          <p className="mb-2 font-mono text-sm font-medium uppercase tracking-tight text-[#333]">
             FAQ
           </p>
           <h2 className="text-4xl font-light leading-tight tracking-tight text-[#333] sm:text-5xl">
@@ -81,6 +83,7 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

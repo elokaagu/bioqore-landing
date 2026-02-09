@@ -32,6 +32,7 @@ export default function DemoVideo() {
         playsInline
         muted
         loop
+        loading="lazy"
         onClick={toggle}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
@@ -55,7 +56,7 @@ export default function DemoVideo() {
               <path d="M8 5v14l11-7z" />
             </svg>
           </span>
-          <span className="text-sm font-medium tracking-wide text-white/80">
+          <span className="text-sm font-medium tracking-tight text-white/80">
             Watch demo
           </span>
         </button>
