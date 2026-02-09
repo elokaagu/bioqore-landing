@@ -1,3 +1,5 @@
+import DemoVideo from "@/components/DemoVideo";
+
 export default function VoyagerIntro() {
   return (
     <section id="voyager" className="bg-[#f2f2f2] py-28 sm:py-36">
@@ -38,32 +40,7 @@ export default function VoyagerIntro() {
           </div>
         </div>
 
-        {/* Video placeholder — cinematic dark block */}
-        <div
-          data-voyager-video=""
-          className="mt-20 flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-[#1a1a1a] py-32 shadow-xl sm:py-40"
-        >
-          <button
-            type="button"
-            className="flex flex-col items-center gap-4 transition-opacity hover:opacity-80"
-            aria-label="Play demo animation"
-          >
-            <span className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-white/20 bg-white/10 backdrop-blur-sm transition-transform hover:scale-110">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="white"
-                className="ml-1"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-            <span className="text-sm font-medium tracking-wide text-white/50">
-              Watch demo
-            </span>
-          </button>
-        </div>
+        <DemoVideo />
       </div>
     </section>
   );
