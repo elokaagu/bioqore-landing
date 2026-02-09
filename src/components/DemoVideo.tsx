@@ -32,7 +32,7 @@ export default function DemoVideo() {
         playsInline
         muted
         loop
-        loading="lazy"
+        preload="metadata"
         onClick={toggle}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
