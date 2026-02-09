@@ -12,8 +12,9 @@ export default function Hero() {
         src={UNICORN_STUDIO_SCRIPT}
         strategy="afterInteractive"
         onLoad={() => {
-          const u = (typeof window !== "undefined" && (window as unknown as { UnicornStudio?: { init: () => void } }).UnicornStudio);
-          if (u?.init) u.init();
+          if (typeof window === "undefined") return;
+          const u = (window as unknown as { UnicornStudio?: { init: () => void } }).UnicornStudio;
+          if (u && typeof u.init === "function") u.init();
         }}
       />
       <div className="absolute inset-0 min-h-screen w-full">
