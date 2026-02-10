@@ -286,18 +286,18 @@ section {
   }
 }
 
-/* ── Team member modal (full-height sheet from the right) ── */
-@keyframes sheetSlideIn {
+/* ── Team member sheet (full-height, from the left) ── */
+@keyframes sheetSlideInLeft {
   from {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
   to {
     transform: translateX(0);
   }
 }
 
-.team-member-sheet {
-  animation: sheetSlideIn 0.3s ease-out;
+.team-member-sheet-left {
+  animation: sheetSlideInLeft 0.3s ease-out;
 }
 
 /* ── Hero title (fade-in on load) ── */

@@ -98,31 +98,31 @@ export default function TeamMemberModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-end"
+      className="fixed inset-0 z-50 flex justify-start"
       role="dialog"
       aria-modal="true"
       aria-labelledby="team-member-name"
       aria-label="Team member profile"
     >
-      {/* Backdrop — tap to close */}
+      {/* Backdrop — blur + dim (reference: dark grey blurred main content) */}
       <button
         type="button"
         onClick={onClose}
-        className="absolute inset-0 bg-black/25"
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
         aria-label="Close"
       />
 
-      {/* Sheet panel — full height, slides in from right */}
+      {/* Sheet panel — full height, slides in from left, rounded top-right */}
       <aside
-        className="team-member-sheet relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden bg-white shadow-xl sm:max-w-lg"
+        className="team-member-sheet-left relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden bg-white shadow-2xl sm:max-w-lg rounded-tr-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top bar: close */}
-        <div className="flex shrink-0 items-center justify-end border-b border-gray-100 px-4 py-3">
+        {/* Top bar: close (top-right of panel) */}
+        <div className="flex shrink-0 items-center justify-end px-4 py-3">
           <button
             type="button"
             onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-800"
             aria-label="Close"
           >
             <CloseIcon />
@@ -130,23 +130,23 @@ export default function TeamMemberModal({
         </div>
 
         {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto px-6 pb-6">
+        <div className="flex-1 overflow-y-auto px-6 pb-4">
           {member ? (
             <>
-              {/* Profile block */}
-              <div className="flex gap-4 pt-4">
-                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full bg-gray-100">
+              {/* Profile: avatar left, name/title + LinkedIn right */}
+              <div className="flex gap-4">
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-gray-100">
                   {!imgError ? (
                     <Image
                       src={member.image}
                       alt=""
                       fill
-                      sizes="96px"
+                      sizes="80px"
                       className="object-cover"
                       onError={() => setImgError(true)}
                     />
                   ) : (
-                    <span className="flex h-full w-full items-center justify-center text-2xl font-semibold text-gray-400">
+                    <span className="flex h-full w-full items-center justify-center text-xl font-semibold text-gray-400">
                       {getInitials(member.name)}
                     </span>
                   )}
@@ -163,7 +163,7 @@ export default function TeamMemberModal({
                       href={member.linkedInUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-gray-100"
+                      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-medium uppercase tracking-wide text-gray-700 transition-colors hover:bg-gray-100"
                     >
                       <LinkedInIcon />
                       LinkedIn
@@ -172,10 +172,10 @@ export default function TeamMemberModal({
                 </div>
               </div>
 
-              {/* Bio */}
+              {/* Bio — main content */}
               {member.biography && (
                 <div className="mt-6 border-t border-gray-100 pt-6">
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-700">
                     {member.biography}
                   </p>
                 </div>
@@ -184,14 +184,14 @@ export default function TeamMemberModal({
           ) : null}
         </div>
 
-        {/* Prev / Next — only when multiple members */}
+        {/* Prev / Next — bottom-left of panel (reference) */}
         {allMembers.length > 1 && (
-          <div className="shrink-0 flex items-center justify-center gap-3 border-t border-gray-100 py-4">
+          <div className="shrink-0 flex items-center justify-start gap-2 border-t border-gray-100 px-6 py-4">
             <button
               type="button"
               onClick={onPrev}
               disabled={!hasPrev}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-40"
               aria-label="Previous team member"
             >
               <ChevronLeftIcon />
@@ -200,7 +200,7 @@ export default function TeamMemberModal({
               type="button"
               onClick={onNext}
               disabled={!hasNext}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 disabled:pointer-events-none disabled:opacity-40"
               aria-label="Next team member"
             >
               <ChevronRightIcon />
