@@ -72,16 +72,16 @@ export default function TeamMemberModal({
       aria-modal="true"
       aria-label="Team member profile"
     >
-      {/* Backdrop: blur + dim */}
+      {/* Sheet backdrop: light dim only (no blur) so it reads as a panel, not a modal */}
       <button
         type="button"
         onClick={onClose}
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/20 transition-opacity"
         aria-label="Close"
       />
 
       {/* Full-height sheet from the right */}
-      <div className="team-member-sheet relative z-10 flex h-full w-full max-w-[min(24rem,100vw)] flex-col overflow-hidden bg-white shadow-2xl sm:max-w-lg">
+      <div className="team-member-sheet relative z-10 flex h-full w-full max-w-[min(24rem,100vw)] flex-col overflow-hidden border-l border-gray-200 bg-white shadow-2xl sm:max-w-lg">
 
         {/* Close button */}
         <button

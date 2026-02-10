@@ -2,7 +2,13 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import ProductCardImage from "@/components/ProductCardImage";
 import WordsReveal from "@/components/WordsReveal";
 
-const cards = [
+const cards: Array<{
+  title: string;
+  tagline: string;
+  href: string;
+  image: string;
+  blueAccent?: boolean;
+}> = [
   {
     title: "Upstream fermentation",
     tagline: "Real-time control",
@@ -14,6 +20,7 @@ const cards = [
     tagline: "Predict & optimize",
     href: "#product",
     image: "/biotech_2.jpg",
+    blueAccent: true,
   },
   {
     title: "Scale-up",
@@ -59,7 +66,7 @@ export default function Product() {
           </div>
         </div>
 
-        {/* 3 dark cards: title, tagline, image fills rest */}
+        {/* 3 dark cards: title, tagline, image fills rest (original style, blue accent on center card) */}
         <RevealOnScroll stagger className="mt-16">
         <div className="grid gap-6 sm:grid-cols-3">
           {cards.map((card) => (
@@ -79,7 +86,7 @@ export default function Product() {
               </div>
               <div className="relative min-h-0 flex-1 bg-gray-900">
                 {card.image ? (
-                  <div className="absolute inset-0 h-full w-full">
+                  <div className={`absolute inset-0 h-full w-full ${card.blueAccent ? "product-card-blue-accent" : ""}`}>
                     <ProductCardImage src={card.image} alt={card.title} />
                   </div>
                 ) : (
