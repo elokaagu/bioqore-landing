@@ -76,14 +76,6 @@ export default function Product() {
               className="group flex flex-col overflow-hidden rounded-xl bg-black transition-transform hover:scale-[1.02]"
               style={{ aspectRatio: "3 / 4" }}
             >
-              <div className="flex flex-col gap-1 p-6">
-                <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
-                  {card.title}
-                </h3>
-                <p className="text-sm font-medium text-white/80">
-                  {card.tagline}
-                </p>
-              </div>
               <div className="relative min-h-0 flex-1 bg-gray-900">
                 {card.image ? (
                   <div className={`absolute inset-0 h-full w-full ${card.blueAccent ? "product-card-blue-accent" : ""}`}>
@@ -95,6 +87,14 @@ export default function Product() {
                     aria-hidden
                   />
                 )}
+              </div>
+              <div className="shrink-0 flex flex-col gap-1 bg-black p-6">
+                <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">
+                  {card.title}
+                </h3>
+                <p className="text-sm font-medium text-white/80">
+                  {card.tagline}
+                </p>
               </div>
             </a>
           ))}

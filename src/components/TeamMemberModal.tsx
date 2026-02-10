@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BlurInImage from "@/components/BlurInImage";
+import Image from "next/image";
 
 export type TeamMemberProfile = {
   name: string;
@@ -11,7 +11,7 @@ export type TeamMemberProfile = {
   linkedInUrl?: string;
 };
 
-type Props = {
+type TeamMemberModalProps = {
   isOpen: boolean;
   onClose: () => void;
   member: TeamMemberProfile | null;
@@ -23,12 +23,44 @@ type Props = {
 
 function getInitials(name: string) {
   return name
-    .split(/[\s,]+/)
-    .filter((s) => s.length > 0)
+    .split(/\s+/)
+    .filter(Boolean)
     .slice(0, 2)
     .map((s) => s[0])
     .join("")
     .toUpperCase();
+}
+
+function CloseIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 6L6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
 }
 
 export default function TeamMemberModal({
@@ -39,23 +71,22 @@ export default function TeamMemberModal({
   currentIndex,
   onPrev,
   onNext,
-}: Props) {
-  const [imageError, setImageError] = useState(false);
+}: TeamMemberModalProps) {
+  const [imgError, setImgError] = useState(false);
 
   useEffect(() => {
-    if (member) setImageError(false);
-  }, [member]);
+    if (member) setImgError(false);
+  }, [member?.name]);
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-    }
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
   }, [isOpen, onClose]);
@@ -70,64 +101,69 @@ export default function TeamMemberModal({
       className="fixed inset-0 z-50 flex justify-end"
       role="dialog"
       aria-modal="true"
+      aria-labelledby="team-member-name"
       aria-label="Team member profile"
     >
-      {/* Sheet backdrop: light dim only (no blur) so it reads as a panel, not a modal */}
+      {/* Backdrop — tap to close */}
       <button
         type="button"
         onClick={onClose}
-        className="absolute inset-0 bg-black/20 transition-opacity"
+        className="absolute inset-0 bg-black/25"
         aria-label="Close"
       />
 
-      {/* Full-height sheet from the right */}
-      <div className="team-member-sheet relative z-10 flex h-full w-full max-w-[min(24rem,100vw)] flex-col overflow-hidden border-l border-gray-200 bg-white shadow-2xl sm:max-w-lg">
+      {/* Sheet panel — full height, slides in from right */}
+      <aside
+        className="team-member-sheet relative z-10 flex h-full w-full max-w-md flex-col overflow-hidden bg-white shadow-xl sm:max-w-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Top bar: close */}
+        <div className="flex shrink-0 items-center justify-end border-b border-gray-100 px-4 py-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-800"
+            aria-label="Close"
+          >
+            <CloseIcon />
+          </button>
+        </div>
 
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-600 transition-colors hover:bg-gray-300 hover:text-gray-800"
-          aria-label="Close profile"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-
-        <div className="flex flex-1 flex-col overflow-y-auto p-8 pt-12">
+        {/* Scrollable content */}
+        <div className="flex-1 overflow-y-auto px-6 pb-6">
           {member ? (
             <>
-              {/* Header: photo + name + title */}
-              <div className="flex gap-4">
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-gray-200">
-                  {!imageError ? (
-                    <BlurInImage
+              {/* Profile block */}
+              <div className="flex gap-4 pt-4">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                  {!imgError ? (
+                    <Image
                       src={member.image}
-                      alt={member.name}
+                      alt=""
                       fill
-                      sizes="80px"
-                      onError={() => setImageError(true)}
+                      sizes="96px"
+                      className="object-cover"
+                      onError={() => setImgError(true)}
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gray-300 text-xl font-semibold text-gray-500">
+                    <span className="flex h-full w-full items-center justify-center text-2xl font-semibold text-gray-400">
                       {getInitials(member.name)}
-                    </div>
+                    </span>
                   )}
                 </div>
-                <div className="min-w-0 flex-1 pt-1">
-                  <h3 className="text-xl font-bold tracking-tight text-[var(--color-main)]">
+                <div className="min-w-0 flex-1">
+                  <h2 id="team-member-name" className="text-xl font-bold tracking-tight text-gray-900">
                     {member.name}
-                  </h3>
+                  </h2>
                   {member.role && (
-                    <p className="mt-0.5 text-sm text-[var(--color-body)]">{member.role}</p>
+                    <p className="mt-0.5 text-sm text-gray-500">{member.role}</p>
                   )}
                   {member.linkedInUrl && (
                     <a
                       href={member.linkedInUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                      className="mt-3 inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-gray-300 hover:bg-gray-100"
                     >
                       <LinkedInIcon />
                       LinkedIn
@@ -136,10 +172,10 @@ export default function TeamMemberModal({
                 </div>
               </div>
 
-              {/* Biography */}
+              {/* Bio */}
               {member.biography && (
-                <div className="mt-8 border-t border-gray-200 pt-6">
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--color-body)]">
+                <div className="mt-6 border-t border-gray-100 pt-6">
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-gray-600">
                     {member.biography}
                   </p>
                 </div>
@@ -148,42 +184,30 @@ export default function TeamMemberModal({
           ) : null}
         </div>
 
-        {/* Prev / Next */}
+        {/* Prev / Next — only when multiple members */}
         {allMembers.length > 1 && (
-          <div className="flex shrink-0 gap-2 border-t border-gray-200 p-4">
+          <div className="shrink-0 flex items-center justify-center gap-3 border-t border-gray-100 py-4">
             <button
               type="button"
               onClick={onPrev}
               disabled={!hasPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
               aria-label="Previous team member"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
+              <ChevronLeftIcon />
             </button>
             <button
               type="button"
               onClick={onNext}
               disabled={!hasNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-40"
               aria-label="Next team member"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
+              <ChevronRightIcon />
             </button>
           </div>
         )}
-      </div>
+      </aside>
     </div>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
   );
 }
