@@ -68,7 +68,7 @@ export default function Security() {
               key={item.title}
               className="bg-white p-7 transition-colors transition-shadow duration-200 hover:bg-gray-50 hover:shadow-md"
             >
-              <div className="mb-4 h-1.5 w-1.5 rounded-full bg-[var(--color-red-accent)]" />
+              <div className="mb-4 h-1.5 w-1.5 rounded-full bg-[var(--color-blue-accent)]" />
               <h3 className="mb-2 text-base font-bold text-[var(--color-main)]">
                 {item.title}
               </h3>

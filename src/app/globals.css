@@ -8,7 +8,7 @@
   --color-blue-accent: #4285f4;
   --color-red-accent: #ef4444;
   --color-charcoal: #262626;
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono-jetbrains), ui-monospace, monospace;
 }
 
@@ -273,18 +273,32 @@ section {
   }
 }
 
-/* ── Team member modal (slide-in panel) ── */
-@keyframes slideInLeft {
+/* ── Team member modal (full-height sheet from the right) ── */
+@keyframes sheetSlideIn {
   from {
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
   to {
     transform: translateX(0);
   }
 }
 
-.team-member-panel {
-  animation: slideInLeft 0.3s ease-out;
+.team-member-sheet {
+  animation: sheetSlideIn 0.3s ease-out;
+}
+
+/* ── Hero title (fade-in on load) ── */
+@keyframes heroTitleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-title-fade-in {
+  animation: heroTitleFadeIn 0.7s ease-out forwards;
 }
 
 /* ── Careers hero (text fade-in on load) ── */

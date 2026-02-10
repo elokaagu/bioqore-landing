@@ -67,7 +67,7 @@ export default function TeamMemberModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-start"
+      className="fixed inset-0 z-50 flex justify-end"
       role="dialog"
       aria-modal="true"
       aria-label="Team member profile"
@@ -80,8 +80,8 @@ export default function TeamMemberModal({
         aria-label="Close"
       />
 
-      {/* Sheet from left: fixed width so it reads as a drawer, not a full-screen modal */}
-      <div className="team-member-panel relative z-10 flex h-full w-full max-w-[min(24rem,90vw)] flex-col overflow-hidden bg-white shadow-2xl sm:max-w-lg">
+      {/* Full-height sheet from the right */}
+      <div className="team-member-sheet relative z-10 flex h-full w-full max-w-[min(24rem,100vw)] flex-col overflow-hidden bg-white shadow-2xl sm:max-w-lg">
 
         {/* Close button */}
         <button

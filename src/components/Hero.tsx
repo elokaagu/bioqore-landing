@@ -1,7 +1,6 @@
 "use client";
 
 import UnicornScene from "unicornstudio-react/next";
-import TypewriterHeadline from "@/components/TypewriterHeadline";
 import WordsReveal from "@/components/WordsReveal";
 
 const UNICORN_STUDIO_PROJECT = "P0se60zan30bsR7i3bBt";
@@ -22,13 +21,15 @@ export default function Hero() {
 
       {/* Text and buttons overlay */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 sm:pb-24">
-        <p className="mb-3 font-mono text-xs font-medium uppercase tracking-wide text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+        <p className="mb-3 font-mono text-xs font-medium uppercase tracking-wide text-white/90">
           AI Copilot
         </p>
-        <h1 className="max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] sm:text-5xl lg:text-6xl xl:text-7xl">
-          <TypewriterHeadline text={"Accelerate your\nbiomanufacturing R&D."} speed={55} />
+        <h1 className="hero-title-fade-in max-w-5xl text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+          Accelerate your
+          <br />
+          biomanufacturing R&D.
         </h1>
-        <div className="mt-3 max-w-5xl text-xl font-light leading-[1.15] tracking-tight text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] sm:text-2xl lg:text-3xl">
+        <div className="mt-3 max-w-5xl text-xl font-light leading-[1.15] tracking-tight text-white/90 sm:text-2xl lg:text-3xl">
           <WordsReveal
             text="From fermentation to cell culture, guided by AI."
             as="p"

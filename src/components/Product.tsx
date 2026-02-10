@@ -59,7 +59,7 @@ export default function Product() {
           </div>
         </div>
 
-        {/* 3 dark cards: title, tagline, image area, LEARN MORE */}
+        {/* 3 dark cards: title, tagline, image fills rest */}
         <RevealOnScroll stagger className="mt-16">
         <div className="grid gap-6 sm:grid-cols-3">
           {cards.map((card) => (
@@ -79,21 +79,15 @@ export default function Product() {
               </div>
               <div className="relative min-h-0 flex-1 bg-gray-900">
                 {card.image ? (
-                  <ProductCardImage src={card.image} alt={card.title} />
+                  <div className="absolute inset-0 h-full w-full">
+                    <ProductCardImage src={card.image} alt={card.title} />
+                  </div>
                 ) : (
                   <div
                     className="h-full w-full bg-gradient-to-b from-gray-900 to-black"
                     aria-hidden
                   />
                 )}
-              </div>
-              <div className="p-6 pt-4">
-                <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-red-accent)] transition-colors group-hover:underline">
-                  Learn more
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M7 17L17 7M17 7H7M17 7v10" />
-                  </svg>
-                </span>
               </div>
             </a>
           ))}

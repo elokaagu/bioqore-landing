@@ -6,7 +6,6 @@ import VoyagerIntro from "@/components/VoyagerIntro";
 import HowItWorks from "@/components/HowItWorks";
 import Product from "@/components/Product";
 import Security from "@/components/Security";
-import Roadmap from "@/components/Roadmap";
 import Mission from "@/components/Mission";
 import FAQ from "@/components/FAQ";
 import GetStarted from "@/components/GetStarted";
@@ -19,7 +18,6 @@ const COLORS = {
   howItWorks: "#f5f5f5",
   product: "#f5f5f5",
   security: "#f2f2f2",
-  roadmap: "#f7f7f7",
   mission: "#f5f5f5",
   faq: "#f2f2f2",
   getStarted: "#fafafa",
@@ -40,9 +38,7 @@ export default function Home() {
       <Product />
       <SectionBlend from={COLORS.product} to={COLORS.security} />
       <Security />
-      <SectionBlend from={COLORS.security} to={COLORS.roadmap} />
-      <Roadmap />
-      <SectionBlend from={COLORS.roadmap} to={COLORS.mission} />
+      <SectionBlend from={COLORS.security} to={COLORS.mission} />
       <Mission />
       <SectionBlend from={COLORS.mission} to={COLORS.faq} />
       <FAQ />
